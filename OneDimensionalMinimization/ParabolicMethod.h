@@ -11,6 +11,7 @@ public:
 	double calculate() override;
 
 	~ParabolicMethod();
+
 private:
 	IFunction* const function;   // функция
 	std::pair<double, double> section;   // отрезок

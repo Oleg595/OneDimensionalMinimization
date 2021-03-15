@@ -1,6 +1,7 @@
 #include"DichotomyMethod.h"
 
-DichotomyMethod::DichotomyMethod(IFunction* const func, double tol, std::pair<double, double> const& data): function(func), tolerance(tol), section(data){}
+DichotomyMethod::DichotomyMethod(IFunction* const func, double tol, std::pair<double, double> const& data)
+	: function(func), tolerance(tol), section(data) {}
 
 void DichotomyMethod::set_tolerance(double tol) {
 	tolerance = tol;
@@ -13,7 +14,7 @@ void DichotomyMethod::set_section(std::pair<double, double> const& data) {
 double DichotomyMethod::calculate() {
 	double a = section.first;
 	double b = section.second;
-	while (b - a > tolerance) {
+	while (b - a >= tolerance) {
 		double delta = (b - a) / 1000;
 		double x1 = (a + b) / 2 - delta;
 		double x2 = (a + b) / 2 + delta;
