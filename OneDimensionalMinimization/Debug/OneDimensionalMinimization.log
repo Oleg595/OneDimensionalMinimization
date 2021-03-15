@@ -1,4 +1,5 @@
-﻿  FunctionImpl.cpp
+﻿  DichotomyMethod.cpp
+  FunctionImpl.cpp
   main.cpp
   Method.cpp
   ParabolicMethod.cpp
