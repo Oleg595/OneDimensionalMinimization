@@ -11,7 +11,7 @@ public:
 	double calculate() override;
 
 	~DichotomyMethod();
-
+  
 private:
 	double tolerance;
 	std::pair<double, double> section;
