@@ -1,4 +1,5 @@
 #include "ParabolicMethod.h"
+#include <iostream>
 
 ParabolicMethod::ParabolicMethod(IFunction* const function, double tol, std::pair<double, double> const& section)
 	: function{ function }, tol{ tol }, section{ section } {}
@@ -19,15 +20,16 @@ double ParabolicMethod::calculate() {
 
 	if (x3 - x1 >= tol) {
 		double f1 = function->at(x1);
-		double f2 = function->at(x3);
+		double f3 = function->at(x3);
 		double x2 = (x1 + x3) / 2;
-		double f3 = function->at(x2);
+		double f2 = function->at(x2);
 
 		while (x3 - x1 >= tol) {
 			double a1 = (f2 - f1) / (x2 - x1);
-			double a2 = 1.f / (x3 - x2) * ((f3 - f1) * (f2 - f1)) / ((x3 - x1) * (x2 - x1));
+			double a2 = (1.0 / (x3 - x2)) * (((f3 - f1) / (x3 - x1)) - ((f2 - f1) / (x2 - x1)));
 
-			double x = 1.f / 2 * (x1 + x2 - a1 / a2);
+			double x = (1.0 / 2) * (x1 + x2 - a1 / a2);
+
 			double f = function->at(x);
 
 			if (x2 < x) {
