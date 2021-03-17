@@ -1,5 +1,6 @@
 #include "ParabolicMethod.h"
 #include <iostream>
+#include <vector>
 
 ParabolicMethod::ParabolicMethod(IFunction* const function, double tol, std::pair<double, double> const& section)
 	: function{ function }, tol{ tol }, section{ section } {}
@@ -14,15 +15,44 @@ void ParabolicMethod::set_section(std::pair<double, double> const& section_) {
 	section = section_;
 }
 
+decltype(auto) ParabolicMethod::first_aproximation() {
+	double a = section.first;
+	double b = section.second;
+
+	double x = (a + b) / 2;
+
+	double fa = function->at(a);
+	double fb = function->at(b);
+	double fx = function->at(x);
+
+	while (!(fa >= fx && fx <= fb)) {
+		if (fa <= fx) {
+			b = x;
+			fb = fx;
+		}
+		else {
+			a = x;
+			fa = fx;
+		}
+		x = (a + b) / 2;
+		fx = function->at(x);
+	}
+	return std::vector<std::pair<double, double>> { {a, fa}, { x, fx }, { b, fb }};
+}
+
 double ParabolicMethod::calculate() {
 	double x1 = section.first;
 	double x3 = section.second;
 
 	if (x3 - x1 >= tol) {
-		double f1 = function->at(x1);
-		double f3 = function->at(x3);
-		double x2 = (x1 + x3) / 2;
-		double f2 = function->at(x2);
+		auto fa = first_aproximation();
+
+		x1 = fa[0].first;
+		double x2 = fa[1].first;
+		x3 = fa[2].first;
+		double f1 = fa[0].second;
+		double f2 = fa[1].second;
+		double f3 = fa[2].second;
 
 		while (x3 - x1 >= tol) {
 			double a1 = (f2 - f1) / (x2 - x1);

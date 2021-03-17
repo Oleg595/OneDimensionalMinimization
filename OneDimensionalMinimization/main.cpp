@@ -1,5 +1,6 @@
 #include <cmath>
 #include <iostream>
+#include <vector>
 #include "IMethod.h"
 
 #define __CRTDBG_MAP_ALLOC
@@ -19,23 +20,26 @@ void clear(pHead* ptr, pArgs*... pargs) {
 }
 
 int main() {
-	IFunction* function = IFunction::create_function([](double x) { return x * std::sin(x) + 2 * cos(x); });
-	IFunction* func= IFunction::create_function([](double x) { return x + 1.0 / (x * x); });
-	IMethod* parabolic_method = IMethod::create_method(IMethod::METHOD::PARABOLIC, function, 0.02, { -5, -4 });
+	auto function = IFunction::create_function([](double x) { return x * std::sin(x) + 2 * cos(x); });
+	auto func= IFunction::create_function([](double x) { return x + 1.0 / (x * x); });
+	auto parabolic_method = IMethod::create_method(IMethod::METHOD::PARABOLIC, function, 0.02, { -5, -4 });
 
-	double x_min = parabolic_method->calculate();
+	/*double x_min = parabolic_method->calculate();
 	std::cout << "Number of function calls: " << function->get_counter() << std::endl;
-	std::cout << "Min: " << x_min << ", with value: " << function->at(x_min) << std::endl;
+	std::cout << "Min: " << x_min << ", with value: " << function->at(x_min) << std::endl;*/
 
-	std::cout << "/******************************************************/" << std::endl;
+	auto dichotomy_method = IMethod::create_method(IMethod::METHOD::DICHOTOMY, function, 0.1, { -5, -4 });
+	std::vector<double> tols = { 0.1, 0.02, 0.01, 0.001 };
+	for (auto tol : tols) {
+		function->update_counter();
+		parabolic_method->set_tolerance(tol);
+		double x_min = parabolic_method->calculate();
 
-	IMethod* dichotomy_function = IMethod::create_method(IMethod::METHOD::DICHOTOMY, function, 0.02, { -5, -4 });
-	function->update_counter();
-	x_min = dichotomy_function->calculate();
-	std::cout << "Number of function calls: " << function->get_counter() << std::endl;
-	std::cout << "Min: " << x_min << ", with value: " << function->at(x_min) << std::endl;
+		std::cout << "Tolerance: " << tol << "; Number of function calls: " << function->get_counter() << std::endl;
+		std::cout << "Min: " << x_min << ", with value: " << function->at(x_min) << std::endl;
+	}
 
-	clear(parabolic_method, dichotomy_function, function, func);
+	clear(parabolic_method, dichotomy_method, function, func);
 
 	_CrtDumpMemoryLeaks();
 	return 0;
