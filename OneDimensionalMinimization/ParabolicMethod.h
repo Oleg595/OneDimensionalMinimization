@@ -13,6 +13,8 @@ public:
 	~ParabolicMethod();
 
 private:
+	decltype(auto) first_aproximation();
+
 	IFunction* const function;   // функция
 	std::pair<double, double> section;   // отрезок
 	double tol;   // погрешность
