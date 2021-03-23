@@ -1,6 +1,7 @@
 #include "IMethod.h"
 #include "ParabolicMethod.h"
 #include "DichotomyMethod.h"
+#include "FibonacciMethod.h"
 
 IMethod* IMethod::create_method(METHOD method, IFunction* const function, double tol, std::pair<double, double> const& section) {
 	if (section.first > section.second) {
@@ -11,6 +12,8 @@ IMethod* IMethod::create_method(METHOD method, IFunction* const function, double
 		return new ParabolicMethod(function, tol, section);
 	case METHOD::DICHOTOMY:
 		return new DichotomyMethod(function, tol, section);
+	case METHOD::FIBONACCY:
+		return new FibonacciMethod(function, tol, section);
 	}
 	return nullptr;
 }

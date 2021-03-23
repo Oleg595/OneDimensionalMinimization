@@ -1,4 +1,16 @@
 ﻿  DichotomyMethod.cpp
+  FibonacciMethod.cpp
+C:\Users\Олег\OneDimensionalMinimization\OneDimensionalMinimization\FibonacciMethod.cpp(23,68): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Олег\OneDimensionalMinimization\OneDimensionalMinimization\FibonacciMethod.cpp(23,98): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Олег\OneDimensionalMinimization\OneDimensionalMinimization\FibonacciMethod.cpp(24,64): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Олег\OneDimensionalMinimization\OneDimensionalMinimization\FibonacciMethod.cpp(24,94): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Олег\OneDimensionalMinimization\OneDimensionalMinimization\FibonacciMethod.cpp(32,51): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Олег\OneDimensionalMinimization\OneDimensionalMinimization\FibonacciMethod.cpp(32,85): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Олег\OneDimensionalMinimization\OneDimensionalMinimization\FibonacciMethod.cpp(37,55): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Олег\OneDimensionalMinimization\OneDimensionalMinimization\FibonacciMethod.cpp(37,89): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  FunctionImpl.cpp
   Method.cpp
+  ParabolicMethod.cpp
   Создание кода...
-  OneDimensionalMinimization.vcxproj -> C:\Users\Олег\source\Repos\OneDimensionalMinimization\x64\Debug\OneDimensionalMinimization.exe
+  LINK : не найден или не выполнена сборка C:\Users\Олег\OneDimensionalMinimization\x64\Debug\OneDimensionalMinimization.exe при последней инкрементной компоновке; выполняется полная компоновка
+  OneDimensionalMinimization.vcxproj -> C:\Users\Олег\OneDimensionalMinimization\x64\Debug\OneDimensionalMinimization.exe

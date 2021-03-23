@@ -6,7 +6,8 @@ class IMethod{
 public:
 	enum METHOD {
 		DICHOTOMY,
-		PARABOLIC
+		PARABOLIC,
+		FIBONACCY
 	};
 
 	static IMethod* create_method(METHOD, IFunction* const, double tol = 0, std::pair<double, double> const& section = {0, 0});   // Создаёт метод

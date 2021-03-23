@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DichotomyMethod.cpp" />
+    <ClCompile Include="FibonacciMethod.cpp" />
     <ClCompile Include="FunctionImpl.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Method.cpp" />
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DichotomyMethod.h" />
+    <ClInclude Include="FibonacciMethod.h" />
     <ClInclude Include="IFunction.h" />
     <ClInclude Include="IMethod.h" />
     <ClInclude Include="ParabolicMethod.h" />

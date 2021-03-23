@@ -29,6 +29,8 @@ int main() {
 	std::cout << "Min: " << x_min << ", with value: " << function->at(x_min) << std::endl;*/
 
 	auto dichotomy_method = IMethod::create_method(IMethod::METHOD::DICHOTOMY, function, 0.1, { -5, -4 });
+	auto fibonaccy_method = IMethod::create_method(IMethod::METHOD::FIBONACCY, function, 0.1, { -5, -4 });
+	std::cout << fibonaccy_method->calculate() << std::endl;
 	std::vector<double> tols = { 0.1, 0.02, 0.01, 0.001 };
 	for (auto tol : tols) {
 		function->update_counter();
